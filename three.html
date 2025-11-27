@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Subscription</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --background: 210 40% 98%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --primary: 221.2 83.2% 53.3%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96.1%;
+            --secondary-foreground: 222.2 47.4% 11.2%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96.1%;
+            --accent-foreground: 222.2 47.4% 11.2%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 221.2 83.2% 53.3%;
+            --radius: 1rem;
+        }
+
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --card-foreground: 210 40% 98%;
+            --popover: 222.2 84% 4.9%;
+            --popover-foreground: 210 40% 98%;
+            --primary: 217.2 91.2% 59.8%;
+            --primary-foreground: 222.2 47.4% 11.2%;
+            --secondary: 217.2 32.6% 17.5%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+            --accent: 217.2 32.6% 17.5%;
+            --accent-foreground: 210 40% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 217.2 32.6% 17.5%;
+            --input: 217.2 32.6% 17.5%;
+            --ring: 212.7 26.8% 83.9%;
+        }
+
+        .bg-grid-pattern {
+            background-image: radial-gradient(hsl(var(--foreground)) 1px, transparent 1px);
+            background-size: 24px 24px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+            opacity: 0.15;
+        }
+
+        .dark .bg-grid-pattern {
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background text-foreground antialiased min-h-screen flex items-center justify-center p-4 transition-colors duration-300 relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] -z-10 opacity-50 dark:opacity-20">
+    </div>
+
+    <div class="w-full max-w-md space-y-6 relative z-10 animate-slide-up">
+
+        <div
+            class="flex justify-between items-center backdrop-blur-sm bg-background/50 p-2 rounded-2xl border border-border/10 shadow-sm">
+            <div class="flex items-center gap-3 pl-2">
+                <div
+                    class="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 text-primary-foreground flex items-center justify-center font-bold text-xl">
+                    {{ name[0] | upper }}
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg leading-tight tracking-tight">{{ name }}</span>
+                </div>
+            </div>
+            <div class="flex gap-1 pr-1">
+                <button id="theme-btn"
+                    class="inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2" />
+                        <path d="M12 20v2" />
+                        <path d="m4.93 4.93 1.41 1.41" />
+                        <path d="m17.66 17.66 1.41 1.41" />
+                        <path d="M2 12h2" />
+                        <path d="M20 12h2" />
+                        <path d="m6.34 17.66-1.41 1.41" />
+                        <path d="m19.07 4.93-1.41 1.41" />
+                    </svg>
+                </button>
+                <button id="lang-btn"
+                    class="inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 8 6 6" />
+                        <path d="m4 14 6-6 2-3" />
+                        <path d="M2 5h12" />
+                        <path d="M7 2h1" />
+                        <path d="m22 22-5-10-5 10" />
+                        <path d="M14 18h6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div
+            class="rounded-3xl border border-border/10 bg-card/80 backdrop-blur-xl text-card-foreground shadow-xl shadow-black/5 overflow-hidden">
+            <div
+                class="relative h-24 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-6 flex items-center justify-between">
+                <div class="space-y-1">
+                    <h3 class="text-sm font-medium text-primary uppercase tracking-wider" data-i18n="status">
+                        Subscription Status</h3>
+                    <div class="flex items-center gap-2">
+                        <div class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 {% if is_active %}bg-green-500{% else %}bg-red-500{% endif %}"></span>
+                            <span
+                                class="relative inline-flex rounded-full h-3 w-3 {% if is_active %}bg-green-500{% else %}bg-red-500{% endif %}"></span>
+                        </div>
+                        <span id="status-text"
+                            class="text-2xl font-bold {% if is_active %}text-green-600 dark:text-green-400{% else %}text-red-600 dark:text-red-400{% endif %}">
+                            {% if is_active %}Active{% else %}Inactive{% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div
+                    class="h-16 w-16 rounded-full bg-background/50 backdrop-blur-md flex items-center justify-center border border-white/10 shadow-inner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="text-primary">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="p-6 pt-2 grid gap-6">
+                <div class="flex items-center justify-between rounded-2xl p-2">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-muted-foreground uppercase tracking-wider"
+                            data-i18n="expiry">
+                            Expiry Date
+                        </label>
+                        <p class="text-xl font-bold font-mono tracking-tight text-foreground">
+                            {{ expiry_date }}
+                        </p>
+                    </div>
+                    <div
+                        class="h-10 w-10 rounded-full bg-background/50 flex items-center justify-center text-muted-foreground shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <h4 class="text-sm font-semibold text-muted-foreground px-2 uppercase tracking-wider flex items-center gap-2"
+                data-i18n="downloads">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                Available Configurations
+            </h4>
+            <div class="grid gap-3">
+                {% if ovpn_download_links %}
+                {% for node, link in ovpn_download_links.items() %}
+                <a href="{{ link }}" download
+                    class="group relative flex items-center justify-between rounded-2xl bg-card p-4 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000">
+                    </div>
+
+                    <div class="flex items-center gap-4 relative z-10">
+                        <div
+                            class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span
+                                class="font-bold text-base text-foreground group-hover:text-primary transition-colors">{{
+                                node }}</span>
+                            <span class="text-xs text-muted-foreground">OpenVPN Config</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="h-8 w-8 rounded-full border border-border flex items-center justify-center text-muted-foreground group-hover:border-primary group-hover:text-primary transition-all relative z-10 bg-background">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="group-hover:translate-y-0.5 transition-transform">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" x2="12" y1="15" y2="3" />
+                        </svg>
+                    </div>
+                </a>
+                {% endfor %}
+                {% else %}
+                <div
+                    class="flex flex-col items-center justify-center rounded-2xl border border-dashed border-muted-foreground/25 bg-card/50 p-10 text-center animate-in fade-in-50">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-full bg-muted mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="text-muted-foreground">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-foreground" data-i18n="noLinks">No configurations available
+                    </h3>
+                    <p class="mt-2 text-sm text-muted-foreground max-w-xs mx-auto">
+                        Please contact support if you believe this is an error.
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const i18n = {
+            en: {
+                status: "Subscription Status",
+                details: "View your subscription details below.",
+                expiry: "Expiry Date",
+                downloads: "Available Configurations",
+                noLinks: "No configurations available",
+                active: "Active",
+                inactive: "Inactive"
+            },
+            fa: {
+                status: "وضعیت اشتراک",
+                details: "جزئیات اشتراک خود را در زیر مشاهده کنید.",
+                expiry: "تاریخ انقضا",
+                downloads: "کانفیگ‌های موجود",
+                noLinks: "کانفیگی موجود نیست",
+                active: "فعال",
+                inactive: "غیرفعال"
+            }
+        };
+
+        const state = {
+            lang: localStorage.getItem('sub_lang') || 'fa',
+            theme: localStorage.getItem('sub_theme') || 'light'
+        };
+
+        function updateUI() {
+            if (state.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            document.documentElement.setAttribute('lang', state.lang);
+            document.documentElement.setAttribute('dir', state.lang === 'fa' ? 'rtl' : 'ltr');
+
+            const dict = i18n[state.lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) el.textContent = dict[key];
+            });
+
+            const statusTextEl = document.getElementById('status-text');
+            const isActive = statusTextEl.className.includes('green');
+            statusTextEl.textContent = isActive ? dict.active : dict.inactive;
+        }
+
+        document.getElementById('theme-btn').addEventListener('click', () => {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('sub_theme', state.theme);
+            updateUI();
+        });
+
+        document.getElementById('lang-btn').addEventListener('click', () => {
+            state.lang = state.lang === 'fa' ? 'en' : 'fa';
+            localStorage.setItem('sub_lang', state.lang);
+            updateUI();
+        });
+        updateUI();
+    </script>
+</body>
+
+</html>
